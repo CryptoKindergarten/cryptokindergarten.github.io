@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F0F0F0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #FFF;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #FFF;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .expand-section {
+      margin-bottom: 10px;
+    }
+
+    .expand-button {
+      background-color: #4CAF50;
+      color: #FFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .expand-content {
+      display: none;
+      padding: 10px;
+      background-color: #FFF;
+      margin-top: 10px;
+    }
+
+    .expanded {
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Awesome Website!</h1>
+  </header>
+
+  <main>
+    <h1>Expandable Content</h1>
+
+    <div class="expand-section">
+      <button class="expand-button" onclick="toggleExpansion('ExpandA')">Expand A</button>
+      <div id="ExpandA" class="expand-content">
+        <p>This is the expandable content for A.</p>
+      </div>
+    </div>
+
+    <div class="expand-section">
+      <button class="expand-button" onclick="toggleExpansion('ExpandB')">Expand B</button>
+      <div id="ExpandB" class="expand-content">
+        <p>This is the expandable content for B.</p>
+      </div>
+    </div>
+
+    <div class="expand-section">
+      <button class="expand-button" onclick="toggleExpansion('ExpandC')">Expand C</button>
+      <div id="ExpandC" class="expand-content">
+        <p>This is the expandable content for C.</p>
+      </div>
+    </div>
+
+    <div class="expand-section">
+      <button class="expand-button" onclick="toggleExpansion('ExpandD')">Expand D</button>
+      <div id="ExpandD" class="expand-content">
+        <p>This is the expandable content for D.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleExpansion(elementId) {
+      const element = document.getElementById(elementId);
+
+      if (element.classList.contains('expanded')) {
+        element.classList.remove('expanded');
+      } else {
+        const expandedSections = document.querySelectorAll('.expand-content.expanded');
+        expandedSections.forEach(section => section.classList.remove('expanded'));
+        element.classList.add('expanded');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Glossary</title>
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+<div class="header">
+    <!-- Your header content here -->
+</div>
+<div class="nav">                                                         
+    <!-- Your navigation links here -->
+</div>      
+<h1>
+    GLOSSARY
+</h1>
+<!-- Marker for TLDR section -->
+<a id="marker-tldr"></a>
+<div class="letter">
+    <span>----A----</span>
+</div>
+<div class="word">
+    <p>Apple: Too Long didn't read <font size="2"> Rad</font></p>
+    <div class="expand-section"> 
+        <button class="expand-button" onclick="toggleExpansion('AppleA')" data-marker="marker-tldr">Basic</button>
+        <button class="expand-button" onclick="toggleExpansion('AppleB')" data-marker="marker-tldr">How it works</button>
+        <button class="expand-button" onclick="toggleExpansion('AppleC')" data-marker="marker-tldr">Video 1</button>
+        <button class="expand-button" onclick="toggleExpansion('AppleD')" data-marker="marker-tldr">Video 2</button>  
+    </div>
+    <div class="expand-section">
+        <div id="AppleA" class="expand-content" data-marker="marker-tldr">   
+            <p>This is the expandable content for A.</p>
+        </div>
+    </div>
+    <div class="expand-section">
+        <div id="AppleB" class="expand-content" data-marker="marker-tldr">
+            <p>This is the expandable content for B.</p>
+        </div>
+    </div>
+    <div class="expand-section">
+        <div id="AppleC" class="expand-content" data-marker="marker-tldr">
+            <p>This is the expandable content for C.</p> 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tSZZFayo64I" frameborder="0" allowfullscreen></iframe>         
+        </div>
+    </div>
+    <div class="expand-section">
+        <div id="AppleD" class="expand-content" data-marker="marker-tldr">
+            <p>This is the expandable content for D.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+  function toggleExpansion(elementId) {
+    const element = document.getElementById(elementId);
+
+    if (element.classList.contains('expanded')) {
+      element.classList.remove('expanded');
+      element.style.display = "none";
+    } else {
+      const expandedSections = document.querySelectorAll('.expand-content.expanded');
+      expandedSections.forEach(section => {
+        section.classList.remove('expanded');
+        section.style.display = "none";
+      });
+
+      element.classList.add('expanded');
+      element.style.display = "block";
+
+      // Get the data-marker attribute value
+      const marker = element.getAttribute('data-marker');
+
+      // Find the marker element
+      const markerElement = document.querySelector(`[data-marker="${marker}"]`);
+
+      if (markerElement) {
+        // Scroll to the marker element
+        markerElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }
+</script>
+</body>
+</html>
